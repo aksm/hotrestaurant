@@ -13,16 +13,17 @@ var PORT = 3000;
 app.use(express.static('public'));
 
 var ressies=[];
+var wait=[];
 
 app.post('/api/tables', function(req, res){
-	if(ressies.length>5){
-		console.log('yup');
-	}else{
-		console.log('nope');
-	}
 	var resev = req.body;
-	ressies.push(resev);
-	res.json(resev);
+	if(ressies.length>5){
+		wait.push(resev);
+		res.json(false);
+	}else{
+		ressies.push(resev);
+		res.json(true);
+	}
 });
 
 app.get('/api/tables', function(req, res){
