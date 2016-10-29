@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var app= express();
 
 app.use(bodyParser.json());
@@ -15,32 +14,30 @@ app.use(express.static('public'));
 var ressies=[];
 
 app.post('/api/tables', function(req, res){
-	if(ressies.length>5){
-		console.log('yup');
-	}else{
-		console.log('nope');
-	}
-	var resev = req.body;
+	var resev = req.body();
 	ressies.push(resev);
 	res.json(resev);
 });
 
-app.get('/api/tables', function(req, res){
+//Han's code
+app.get('/reserve', function(req, res){
+	res.send('reserve.html');
+});
 
+
+app.get('/api/tables', function(req, res){
+	// var ressies= [
+	// {
+	// 	customerName: "matt",
+	// 	phoneNumber: "777",
+	// 	customerEmail: "th@",
+	// 	customerID: '44'
+	// }];
 	res.json(ressies);
 });
 
-app.get('/reserve', function(req, res){
+app.get('')
 
-		res.sendFile(__dirname+'/public/reserve.html');
-
-});
-
-app.get('/reserve', function(req, res){
-
-		res.sendFile(__dirname+'/public/reserve.html');
-
-});
 
 
 
