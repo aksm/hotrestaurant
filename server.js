@@ -31,6 +31,11 @@ app.get('/api/tables', function(req, res){
 	res.json(ressies);
 });
 
+app.get('/api/waitlist', function(req, res){
+
+	res.json(wait);
+});
+
 app.get('/reserve', function(req, res){
 
 		res.sendFile(__dirname+'/public/reserve.html');
