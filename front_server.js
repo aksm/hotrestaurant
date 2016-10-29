@@ -14,16 +14,21 @@ app.use(express.static('public'));
 var ressies=[];
 
 app.post('/api/tables', function(req, res){
-	var resev = req.body();
+	var resev = req.body;
 	ressies.push(resev);
 	res.json(resev);
 });
 
+app.use(express.static('public'));
+
 //Han's code
 app.get('/reserve', function(req, res){
-	res.send('reserve.html');
+	res.sendFile(__dirname + '/public/reserve.html');
 });
 
+app.get('/tables', function(req, res){
+	res.sendFile(__dirname + '/public/tables.html');
+})
 
 app.get('/api/tables', function(req, res){
 	// var ressies= [
@@ -36,7 +41,7 @@ app.get('/api/tables', function(req, res){
 	res.json(ressies);
 });
 
-app.get('')
+
 
 
 
