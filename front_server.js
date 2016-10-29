@@ -19,6 +19,12 @@ app.post('/api/tables', function(req, res){
 	res.json(resev);
 });
 
+//Han's code
+app.get('/reserve', function(req, res){
+	res.send('reserve.html');
+});
+
+
 app.get('/api/tables', function(req, res){
 	// var ressies= [
 	// {
@@ -31,6 +37,7 @@ app.get('/api/tables', function(req, res){
 });
 
 app.get('')
+
 
 
 
