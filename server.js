@@ -49,10 +49,12 @@ app.get('/', function(req, res){
 
 });
 
-
+app.get('/tables', function(req, res){
+    res.sendFile(__dirname + '/public/tables.html');
+});
 
 
 
 app.listen(PORT, function(){
 	console.log('listening on PORT:', PORT);
-})
+});
