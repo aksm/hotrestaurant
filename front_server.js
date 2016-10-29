@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
 var app= express();
 
 app.use(bodyParser.json());
@@ -12,35 +13,56 @@ var PORT = 3000;
 app.use(express.static('public'));
 
 var ressies=[];
+var wait=[];
 
 app.post('/api/tables', function(req, res){
-	var resev = req.body();
-	ressies.push(resev);
-	res.json(resev);
-});
+	var resev = req.body;
+	if(ressies.length>=5){
+		wait.push(resev);
+		res.json(false);
+	}else{
+		ressies.push(resev);
+		res.json(true);
+	}
 
-//Han's code
-app.get('/reserve', function(req, res){
-	res.send('reserve.html');
+	console.log('reservations:' + ressies);
+	console.log('waitlist' + wait);
 });
-
 
 app.get('/api/tables', function(req, res){
-	// var ressies= [
-	// {
-	// 	customerName: "matt",
-	// 	phoneNumber: "777",
-	// 	customerEmail: "th@",
-	// 	customerID: '44'
-	// }];
+
 	res.json(ressies);
 });
 
-app.get('')
+app.get('/api/waitlist', function(req, res){
 
+	res.json(wait);
+});
+
+app.get('/reserve', function(req, res){
+
+		res.sendFile(__dirname+'/public/reserve.html');
+
+});
+
+app.get('/tables', function(req, res){
+
+		res.sendFile(__dirname+'/public/tables.html');
+
+});
+
+app.get('/', function(req, res){
+
+		res.sendFile(__dirname+'/public/home.html');
+
+});
+
+app.get('/tables', function(req, res){
+    res.sendFile(__dirname + '/public/tables.html');
+});
 
 
 
 app.listen(PORT, function(){
 	console.log('listening on PORT:', PORT);
-})
+});
