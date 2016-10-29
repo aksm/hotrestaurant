@@ -17,7 +17,7 @@ var wait=[];
 
 app.post('/api/tables', function(req, res){
 	var resev = req.body;
-	if(ressies.length>5){
+	if(ressies.length>=5){
 		wait.push(resev);
 		res.json(false);
 	}else{
