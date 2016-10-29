@@ -37,11 +37,19 @@ app.get('/reserve', function(req, res){
 
 });
 
-app.get('/reserve', function(req, res){
+app.get('/tables', function(req, res){
 
-		res.sendFile(__dirname+'/public/reserve.html');
+		res.sendFile(__dirname+'/public/tables.html');
 
 });
+
+app.get('/', function(req, res){
+
+		res.sendFile(__dirname+'/public/home.html');
+
+});
+
+
 
 
 
