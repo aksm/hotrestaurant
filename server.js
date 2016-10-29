@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
 var app= express();
 
 app.use(bodyParser.json());
@@ -20,17 +21,15 @@ app.post('/api/tables', function(req, res){
 });
 
 app.get('/api/tables', function(req, res){
-	// var ressies= [
-	// {
-	// 	customerName: "matt",
-	// 	phoneNumber: "777",
-	// 	customerEmail: "th@",
-	// 	customerID: '44'
-	// }];
+
 	res.json(ressies);
 });
 
-app.get('')
+app.get('/reserve', function(req, res){
+
+		res.sendFile(__dirname+'/public/reserve.html');
+
+});
 
 
 
