@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
