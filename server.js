@@ -25,8 +25,6 @@ app.post('/api/tables', function(req, res){
 		res.json(true);
 	}
 
-	console.log('reservations:' + ressies);
-	console.log('waitlist' + wait);
 });
 
 app.get('/api/tables', function(req, res){
