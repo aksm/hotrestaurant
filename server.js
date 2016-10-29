@@ -15,7 +15,12 @@ app.use(express.static('public'));
 var ressies=[];
 
 app.post('/api/tables', function(req, res){
-	var resev = req.body();
+	if(ressies.length>5){
+		console.log('yup');
+	}else{
+		console.log('nope');
+	}
+	var resev = req.body;
 	ressies.push(resev);
 	res.json(resev);
 });
@@ -23,6 +28,12 @@ app.post('/api/tables', function(req, res){
 app.get('/api/tables', function(req, res){
 
 	res.json(ressies);
+});
+
+app.get('/reserve', function(req, res){
+
+		res.sendFile(__dirname+'/public/reserve.html');
+
 });
 
 app.get('/reserve', function(req, res){
